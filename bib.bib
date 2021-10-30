@@ -1,0 +1,54 @@
+@article{Impagliazzo2001,
+    title = {On the Complexity of k-SAT},
+    journal = {Journal of Computer and System Sciences},
+    volume = {62},
+    number = {2},
+    pages = {367-375},
+    year = {2001},
+    issn = {0022-0000},
+    doi = {https://doi.org/10.1006/jcss.2000.1727},
+    url = {https://www.sciencedirect.com/science/article/pii/S0022000000917276},
+    author = {Russell Impagliazzo and Ramamohan Paturi},
+    abstract = {The k-SAT problem is to determine if a given k-CNF has a satisfying assignment. It is a celebrated open question as to whether it requires exponential time to solve k-SAT for k⩾3. Here exponential time means 2δn for some δ>0. In this paper, assuming that, for k⩾3, k-SAT requires exponential time complexity, we show that the complexity of k-SAT increases as k increases. More precisely, for k⩾3, define sk=inf{δ:there exists 2δn algorithm for solving k-SAT}. Define ETH (Exponential-Time Hypothesis) for k-SAT as follows: for k⩾3, sk>0. In this paper, we show that sk is increasing infinitely often assuming ETH for k-SAT. Let s∞ be the limit of sk. We will in fact show that sk⩽(1−d/k)s∞ for some constant d>0. We prove this result by bringing together the ideas of critical clauses and the Sparsification Lemma to reduce the satisfiability of a k-CNF to the satisfiability of a disjunction of 2εnk′-CNFs in fewer variables for some k′⩾k and arbitrarily small ε>0. We also show that such a disjunction can be computed in time 2εn for arbitrarily small ε>0.}
+}
+
+@article{Cygan2016,
+    author = {Cygan, Marek and Dell, Holger and Lokshtanov, Daniel and Marx, D\'{a}niel and Nederlof, Jesper and Okamoto, Yoshio and Paturi, Ramamohan and Saurabh, Saket and Wahlstr\"{o}m, Magnus},
+    title = {On Problems as Hard as CNF-SAT},
+    year = {2016},
+    issue_date = {June 2016},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {12},
+    number = {3},
+    issn = {1549-6325},
+    url = {https://doi.org/10.1145/2925416},
+    doi = {10.1145/2925416},
+    abstract = {The field of exact exponential time algorithms for non-deterministic polynomial-time
+    hard problems has thrived since the mid-2000s. While exhaustive search remains asymptotically
+    the fastest known algorithm for some basic problems, non-trivial exponential time
+    algorithms have been found for a myriad of problems, including Graph Coloring, Hamiltonian
+    Path, Dominating Set, and 3-CNF-Sat. In some instances, improving these algorithms
+    further seems to be out of reach. The CNF-Sat problem is the canonical example of
+    a problem for which the trivial exhaustive search algorithm runs in time O(2n), where
+    n is the number of variables in the input formula. While there exist non-trivial algorithms
+    for CNF-Sat that run in time o(2n), no algorithm was able to improve the growth rate
+    2 to a smaller constant, and hence it is natural to conjecture that 2 is the optimal
+    growth rate. The strong exponential time hypothesis (SETH) by Impagliazzo and Paturi
+    [JCSS 2001] goes a little bit further and asserts that, for every ϵ &lt; 1, there is
+    a (large) integer k such that k-CNF-Sat cannot be computed in time 2ϵn.In this article,
+    we show that, for every ϵ &lt; 1, the problems Hitting Set, Set Splitting, and NAE-Sat
+    cannot be computed in time O(2ϵn) unless SETH fails. Here n is the number of elements
+    or variables in the input. For these problems, we actually get an equivalence to SETH
+    in a certain sense. We conjecture that SETH implies a similar statement for Set Cover
+    and prove that, under this assumption, the fastest known algorithms for Steiner Tree,
+    Connected Vertex Cover, Set Partitioning, and the pseudo-polynomial time algorithm
+    for Subset Sum cannot be significantly improved. Finally, we justify our assumption
+    about the hardness of Set Cover by showing that the parity of the number of solutions
+    to Set Cover cannot be computed in time O(2ϵn) for any ϵ &lt; 1 unless SETH fails.},
+    journal = {ACM Trans. Algorithms},
+    month = may,
+    articleno = {41},
+    numpages = {24},
+    keywords = {reduction, satisfiability, strong exponential time hypothesis, Optimal growth rate}
+}

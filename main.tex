@@ -1,0 +1,281 @@
+\documentclass[11pt]{article}
+\setcounter{tocdepth}{1}
+
+% =====================================
+%            пакеты
+% =====================================
+
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage[russian,colorlinks=true,urlcolor=red,linkcolor=blue]{hyperref}
+\usepackage{enumerate}
+\usepackage{datetime}
+% \usepackage{minted}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{epstopdf}
+\usepackage{xifthen}
+\usepackage{ dsfont }
+\usepackage{ wasysym }
+\usepackage{ upgreek }
+\usepackage{epigraph}
+
+\graphicspath{{img/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\parskip=0em
+\parindent=0em
+
+\sloppy
+\voffset=-20mm
+\textheight=235mm
+\hoffset=-25mm
+\textwidth=180mm
+\headsep=12pt
+\footskip=20pt
+
+\pagenumbering{arabic}
+
+\setlength{\parskip}{0.15cm}
+
+\usepackage{indentfirst}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\usepackage{paralist}
+\usepackage{cancel}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{mdframed}
+\usepackage{lastpage}
+\usepackage{microtype}
+% \usepackage[super]{cite}
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem}
+\pagestyle{fancy}
+
+\setcounter{page}{1}
+
+
+\newcommand{\makegood}{
+	\ifx\ShortCourseName\undefined
+	\gdef\ShortCourseName{\CourseName}
+	\fi
+	
+	% \newcommand\CustomTitle{...} до \makegood для того, чтобы
+	% переопределить содержимое титульной страницы до содержания.
+	\ifx\CustomTitle\undefined
+	\title{\CourseName}
+	\maketitle
+	\else
+	\pagestyle{empty}
+	\CustomTitle
+	\fi
+	
+	\tableofcontents
+	\pagebreak
+	\pagestyle{fancy}
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	
+	\ifdefined\ENABLEDMATH
+	\renewcommand\proofname{\em \bf{Доказательство}}
+	\else
+	\fi
+}
+
+\newcommand{\Section}[2]{
+	\newpage % new page
+	\stepcounter{section}
+	\bigskip
+	\phantomsection
+	\addcontentsline{toc}{section}{\arabic{section}. #1}
+	\begin{center}
+		{\LARGE \bf \arabic{section}. #1}\\
+		\vspace{0.3em}
+		{\Large #2}
+	\end{center}
+	%\bigskip
+	\gdef\SectionName{#1}
+	% \gdef\AuthorName{#2}
+	% \gdef\DateName{#2}
+	
+	\lhead{\ShortCourseName}
+	\chead{}
+	\rhead{\SectionName}
+	
+	\renewcommand{\headrulewidth}{0.15 mm}
+	
+	% \ifx\LaconicFooter\undefined
+	
+	%\rfoot{
+	%	%    \topskip0pt\vspace*{\fill}
+	%	Автор: \AuthorName
+	%	%    \vspace*{\fill}
+	%}
+	%\renewcommand{\footrulewidth}{0.15 mm}
+	% \fi
+}
+
+% =====================================
+%            математика
+% =====================================
+
+\makeatletter
+\newenvironment{proof1}[1][\proofname]{\par
+  \vspace{-\topsep}% remove the space after the theorem
+  \pushQED{\qed}%
+  \normalfont
+  \topsep0pt \partopsep0pt % no space before
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+  \addvspace{6pt plus 6pt} % some space after
+}
+\makeatother
+
+\makeatletter
+\newenvironment{solution}[1][Решение]{\par
+  \vspace{-\topsep}% remove the space after the theorem
+  \pushQED{\qed}%
+  \normalfont
+  \topsep0pt \partopsep0pt % no space before
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+  \addvspace{6pt plus 6pt} % some space after
+}
+\makeatother
+
+\def\eps{\varepsilon}         %
+\def\SO{\Rightarrow}          % =>
+\def\EQ{\Leftrightarrow}      % <=>
+\def\t{\texttt}               % mono font
+\def\s{\textsc}               % small capitals (for problem names)
+\def\c#1{{\rm\sc{#1}}}        % font for classes \t{NP}, SAT, etc
+\def\O{\mathcal{O}}           %
+\def\NO{\t{\#}}               % #
+\def\edge{\leftrightarrow}    % <->
+\def\xto{\xrightarrow}        % ->
+\renewcommand{\le}{\leqslant} % <=, beauty
+\renewcommand{\ge}{\geqslant} % >=, beauty
+\def\xor{\text{ {\raisebox{-2pt}{\ensuremath{\Hat{}}}} }}
+\newcommand{\q}[1]{\langle #1 \rangle}               % <x>
+\newcommand{\cool}[1]{\mathcal{#1}}
+
+\def\TODO{{\color{red}{\bf TODO}}}
+
+% Должна использоваться вне \document.
+\newcommand{\enablemath}{
+	\usepackage{amsmath,amsthm,amssymb,mathtext}
+	\usepackage{thmtools}
+	\usepackage{tikz}
+	\usepackage{nameref,hyperref,cleveref}
+	
+	\ifx\ThmSpacing\undefined
+	\def\ThmSpacing{9pt}
+	\fi
+	
+	\ifx\ThmNamespace\undefined
+	\def\ThmNamespace{section}
+	\fi
+	
+	\declaretheoremstyle[
+	spaceabove=\ThmSpacing, spacebelow=\ThmSpacing,
+	% postheadhook = {\hspace{0mm}\newline},
+	headfont=\slshape\bfseries,
+	bodyfont=\normalfont,
+	postheadspace=0.5em,
+	]{thmstyle_def}
+	
+	\declaretheoremstyle[
+	spaceabove=\ThmSpacing, spacebelow=\ThmSpacing,
+	postheadspace=0.5em,
+	]{thmstyle_thm}
+	
+	\declaretheoremstyle[
+	spaceabove=\ThmSpacing, spacebelow=\ThmSpacing,
+	headfont=\itshape\bfseries,
+	notefont=\itshape\bfseries, notebraces={}{},
+	bodyfont=\normalfont,
+	postheadspace=0.5em,
+	]{thmstyle_cons}
+	
+	\declaretheoremstyle[
+	spaceabove=\ThmSpacing, spacebelow=\ThmSpacing,
+	headfont=\bfseries,
+	notefont=\bfseries, notebraces={}{},
+	bodyfont=\normalfont,
+	postheadspace=0.5em,
+	]{thmstyle_examp}  
+	
+	\declaretheoremstyle[
+	spaceabove=\ThmSpacing, spacebelow=\ThmSpacing,
+	headfont=\ttfamily\itshape,
+	notefont=\ttfamily\itshape, notebraces={}{},
+	bodyfont=\normalfont,
+	postheadspace=0.5em,
+	]{thmstyle_remark}
+	
+	\declaretheorem[numbered=no, name=Теорема, style=thmstyle_thm]{theorem}
+	\declaretheorem[numbered=no, name=Сведение, style=thmstyle_thm]{reduction}
+	\declaretheorem[numbered=no, name=Определение, style=thmstyle_def]{definition}
+	\declaretheorem[numbered=no, name=Задача, style=thmstyle_def]{problem}
+	\declaretheorem[numbered=no, name=Гипотеза, style=thmstyle_def]{hypothesis}
+	\declaretheorem[numbered=no, name=Утверждение, style=thmstyle_thm]{statement}
+	\declaretheorem[numbered=no, name=Замечание, style=thmstyle_remark]{remark}
+	\declaretheorem[numbered=no, name=Лемма, style=thmstyle_thm]{lemma}
+	\declaretheorem[numbered=no, name=Следствие, style=thmstyle_cons]{corollary}
+	\declaretheorem[numbered=no, name=Пример, style=thmstyle_examp]{example}
+	\declaretheorem[numbered=no, name=Примеры, style=thmstyle_examp]{examples}
+	\declaretheorem[numbered=no, name=Свойства, style=thmstyle_cons]{properties}
+	\declaretheorem[numbered=no, name=Свойство, style=thmstyle_cons]{property}
+	\declaretheorem[numbered=no, name=Упражнение, style=thmstyle_examp]{exerc}
+	\declaretheorem[numbered=no, name=Тезис, style=thmstyle_examp]{thesis}
+	\declaretheorem[numbered=no, name=Напоминание, style=thmstyle_examp]{reminder}
+	\declaretheorem[numbered=no, name=Алгоритм, style=thmstyle_examp]{algorithm}
+	
+	\newcommand{\thmslashn}{\slashn}
+	
+	\newcommand{\ENABLEDMATH}{YES}
+}
+
+% =====================================
+%            осмыленная часть
+% =====================================
+
+% \gdef\ShortCourseName{FGC}
+\gdef\CourseName{Fine Grained Complexity}
+\enablemath
+
+\begin{document}
+
+\makegood
+\input{01}
+
+\pagebreak
+
+\bibliographystyle{apalike}
+\bibliography{bib.bib}
+
+\end{document}
