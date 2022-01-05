@@ -26,6 +26,9 @@
 \usepackage{ wasysym }
 \usepackage{ upgreek }
 \usepackage{epigraph}
+\usepackage{wrapfig}
+\usepackage{adjustbox}
+\usepackage{float}
 
 \graphicspath{{img/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
@@ -242,7 +245,8 @@
 	\declaretheorem[numbered=no, name=Определение, style=thmstyle_def]{definition}
 	\declaretheorem[numbered=no, name=Задача, style=thmstyle_def]{problem}
 	\declaretheorem[numbered=no, name=Гипотеза, style=thmstyle_def]{hypothesis}
-	\declaretheorem[numbered=no, name=Утверждение, style=thmstyle_thm]{statement}
+	\declaretheorem[numbered=yes, name=Утверждение, style=thmstyle_thm]{statement}
+	\declaretheorem[numbered=no, name=Факт, style=thmstyle_thm]{fact}
 	\declaretheorem[numbered=no, name=Замечание, style=thmstyle_remark]{remark}
 	\declaretheorem[numbered=no, name=Лемма, style=thmstyle_thm]{lemma}
 	\declaretheorem[numbered=no, name=Следствие, style=thmstyle_cons]{corollary}
@@ -260,6 +264,9 @@
 	\newcommand{\ENABLEDMATH}{YES}
 }
 
+\newlength{\strutheight}
+\settoheight{\strutheight}{\strut}
+
 % =====================================
 %            осмыленная часть
 % =====================================
@@ -272,6 +279,7 @@
 
 \makegood
 \input{01}
+\input{02}
 
 \pagebreak
 
